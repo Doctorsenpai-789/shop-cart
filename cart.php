@@ -8,13 +8,15 @@ require_once('./php/component.php');
 
 $db = new CreateDb("Productdb","Producttb");
 
+
 if(isset($_POST['remove'])){
   if($_GET['action']=='remove'){
     foreach($_SESSION['cart'] as $key => $value){
       if($value['product_id']== $_GET['id']){
         unset($_SESSION['cart'][$key]);
-        echo "<script>alert('Product has been Removed...!')</script>";
-        echo "<script>window.location ='cart.php'</script>";
+      //  echo "<script>alert('Product has been Removed...!')</script>";
+      //  echo "<script>window.location ='cart.php'</script>";
+         header("location:cart.php");
       }
     }
   }
@@ -34,6 +36,10 @@ if(isset($_POST['remove'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/index.css">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 
 
 <!-- Font-Awesome-->
@@ -53,13 +59,14 @@ if(isset($_POST['remove'])){
       <div class="row px-5">
         <div class="col-md-7">
           <div class="shopping-cart mt-5">
-              <h6>My Cart</h6>
+              <h6>My Plant Cart</h6>
               <hr>
 
               <?php
               
               $total = 0;
               if(isset($_SESSION['cart'])){
+                
 
                 $product_id = array_column($_SESSION['cart'],'product_id');
 
@@ -70,8 +77,10 @@ if(isset($_POST['remove'])){
                 foreach($product_id as $id){
 
                   if($row['id']==$id){
+                    
                     cartElement($row['product_image'],$row['product_name'],$row['product_price'],$row['id']);
                     $total = $total + (int)$row['product_price'];
+                    
                   }
                 }
               }
@@ -79,6 +88,8 @@ if(isset($_POST['remove'])){
               else{
                 echo "<h5>Cart is Empty</h5>";
               }
+
+              
               
               
               
@@ -109,6 +120,9 @@ if(isset($_POST['remove'])){
                 <h6>Delivery Charges</h6>
                 <hr>
                 <h6>Amount Payable</h6>
+                <br>
+                <a href="index.php" class ="btn btn-success"><i class="fas fa-cart-plus">
+                </i> &nbsp;&nbsp;Continue Shopping</a>
               </div>
               <div class="col-md-6">
                 <h6>$<?php echo $total;?></h6>
@@ -117,6 +131,11 @@ if(isset($_POST['remove'])){
                 <h6>$<?php
                 echo $total 
                 ?></h6>
+                <br>
+                <br>
+                
+                <a href="checkout.php" class ="btn btn-info" style ="margin-top:15px;"><i class="far fa-credit-card">
+                </i> &nbsp;&nbsp;Check Out</a>
               </div>
               
             </div>

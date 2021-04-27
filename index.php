@@ -15,11 +15,12 @@ if(isset($_POST['add'])){
 
  if(isset($_SESSION['cart'])){
     $item_array_id = array_column($_SESSION['cart'],"product_id");
-    print_r($item_array_id);
+    //print_r($item_array_id);
 
     if(in_array($_POST['product_id'],$item_array_id)){
-      echo "<script>alert('Product is already added in the cart...!')</script>)";
-      echo "<script> window.location = 'index.php'</script>";
+    //  echo "<script>alert('Product is already added in the cart...!')</script>)";
+    echo "<p> it already added";
+     // echo "<script> window.location = 'index.php'</script>";
     }else{
       $count = count($_SESSION['cart']);
       $item_array = array(
@@ -28,7 +29,7 @@ if(isset($_POST['add'])){
 
 
       $_SESSION['cart'][$count] = $item_array;
-      print_r($_SESSION);
+    //  print_r($_SESSION);
     }
  }
  else{
@@ -38,9 +39,16 @@ if(isset($_POST['add'])){
 
   // create new session variable
    $_SESSION['cart'][0]= $item_array;
-   print_r($_SESSION['cart']);
+   //print_r($_SESSION['cart']);
   }
 }
+    
+// if(isset($_POST['quantity'])){
+//   $repeatproduct = $_POST['quantity'] * $_POST['product-price'] ;
+ 
+
+// }
+
 
 
 
@@ -54,7 +62,10 @@ if(isset($_POST['add'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shopping plants</title>
     <link rel="stylesheet" href="./css/index.css">
-
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
 
     <!-- Font-Awesome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -65,7 +76,10 @@ if(isset($_POST['add'])){
 
 
 </head>
+
 <body>
+
+
   <?php require_once("./php/header.php")?>
   <div class="container">
         <div class="row text-center py-5">

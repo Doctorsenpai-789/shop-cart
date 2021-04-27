@@ -25,11 +25,11 @@ function component($productname,$productprice,$productimg,$productid){
                      Some quick example
                   </p>
                   <h5>
-                  <small><s class=\"text-secondary\">$519</s></small>
-                  <span class=\"price\">$productprice</span>
+                  <small><s class=\"text-secondary\">$300</s></small>
+                  <span class=\"price\"  name =\"product-price\">$productprice</span>
                   </h5>
 
-                  <button type=\"submit\" class =\"btn btn-warning my-3\" name =\"add\">Add to Cart <i class =\"fas fa-shopping-cart\"></i></button>
+                  <button type=\"submit\" class =\"btn btn-success my-3\" name =\"add\">Add to Cart <i class =\"fas fa-shopping-cart\"></i></button>
                   
                   <input type =\"hidden\" name=\"product_id\" value=\"$productid\">
                </div>
@@ -63,18 +63,20 @@ function cartElement($productimg,$productname,$productprice,$productid){
                         <small class=\"text-secondary\">Seller:dailytuition</small>
                         <h5 class=\"pt-5\">$productprice</h5>
                         <button type=\"submit\" class=\"btn btn-warning\">Save for Later</button>
-                        <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\">Remove</button>
+                        <button type=\"submit\" class=\"btn btn-danger mx-2\" name=\"remove\"><i class=\"fas fa-trash\"></i></button>
+
                       </div>
                       <div class=\"col-md-3 py-5\">
                          <div>
-                            <button type=\"button\" class=\"btn bg-light border rounded-circle\"><i class=\"fas fa-minus\"></i></button>
-                            <input type=\"text\" value=\"1\" class=\"form-control w-25 d-inline\">
-                            <button type=\"button\" class=\"btn bg-light border rounded-circle\"><i class=\"fas fa-plus\"></i></button>
+                         <h6> Quantity </h6>
+                         <input type=\"number\" id =\"quantity\" name = \"quantity\"value=\"1\" style=\"width:50px\">
                          </div>
                       </div>
+
                   </div>
                 </div>
               </form>
+           
    
    ";
    echo $element;

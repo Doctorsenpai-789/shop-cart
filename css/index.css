@@ -7,7 +7,7 @@ img{
 
 .fa-star,
 .fa-star-half{
-    color:yellowgreen;
+    color:blue;
     padding: 3% 0;
 }
 
@@ -23,5 +23,8 @@ img{
 }
 .price-details h6{
     padding:3% 2%;
+}
+#checkout{
+    margin-top:-10px;
 }
 
